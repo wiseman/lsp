@@ -85,10 +85,10 @@ request will be bound for use by the LSP code itself.
 For example, LSP's AllegroServe support binds the following two
 variables:
 
-  REQUEST
-    The HTTP request object containing all the information about the request.
-  ENTITY
-    The information passed to the publish-lsp function.
+REQUEST
+  The HTTP request object containing all the information about the request.
+ENTITY
+  The information passed to the publish-lsp function.
 
 (See the AllegroServe documentation for more information on these
 objects.)
@@ -125,10 +125,10 @@ is modified, the next time a request is made for that page the code
 will be recompiled and recached.
 
 In my first attempt to do this, I tried to construct forms instead of
-strings.  That just made it trickier to separate forms across <% ...
-%> tags (see the dotimes example above).  Just because it's bad that
-other languages are often *limited* to manipulating code as strings
-doesn't mean there aren't times where it's appropriate.
+strings.  That just made it trickier to separate forms across ``<% ...
+%>`` tags (see the ``dotimes`` example above).  Just because it's bad
+that other languages are often *limited* to manipulating code as
+strings doesn't mean there aren't times where it's appropriate.
 
 There's nothing like JSP's directives or declarations.
 
