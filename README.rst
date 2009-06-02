@@ -39,7 +39,7 @@ of the URL at which to publish the file,e.g. ``"/math/sum.lsp"``;
 ``FILE`` is a pathname that specifies the file containing the page to
 publish. ``PACKAGE`` is the package the reader should use when loading
 and compiling this file (``*package*`` is the default).  ``SERVER`` is
-the HTTP listener on which to publish the file
+the HTTP listener on which to publish the file.
 
 Example::
 
@@ -88,7 +88,7 @@ variables:
 REQUEST
   The HTTP request object containing all the information about the request.
 ENTITY
-  The information passed to the publish-lsp function.
+  The information passed to the ``publish-lsp`` function.
 
 (See the AllegroServe documentation for more information on these
 objects.)
@@ -112,7 +112,7 @@ page as a whole is syntactically valid, e.g.::
     <img src="mr-yuck.jpg">
   <% ) %>
 
-See the examples directory for examples of publishing and using LSP
+See the ``examples`` directory for examples of publishing and using LSP
 files in both AllegroServe and Araneida.
 
 
