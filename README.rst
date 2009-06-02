@@ -48,36 +48,36 @@ Example::
                :server *my-server-or-http-listener*)
 
 An LSP file looks just like an HTML file, except for two new tags:
-<% ... %> and <%= ... %>.
+``<% ... %>`` and ``<%= ... %>``.
 
-<% ... %> is a scriptlet tag (to use the JSP terminology), and wraps
-lisp code.  For example, <% (dotimes (i 10) (beep)) %>. The code
-inside the tag is executed each time the page is requested.
+``<% ... %>`` is a scriptlet tag (to use the JSP terminology), and
+wraps lisp code.  For example, ``<% (dotimes (i 10) (beep)) %>``. The
+code inside the tag is executed each time the page is requested.
 
-<%= ... %> is an expression tag, and the effect of this tag varies
+``<%= ... %>`` is an expression tag, and the effect of this tag varies
 according to the particular web framework you are using, but is
 intended to evaluate the contents as if they were wrapped with the
 HTML generation macro that is usually provided.
 
-For example, lsp-aserve.lisp defines <%=...%> such that the contents
-are wrapped with the Franz net.html.generator:html macro.  More
-precisely,
+For example, ``lsp-aserve.lisp`` defines ``<%=...%>`` such that the
+contents are wrapped with the Franz ``net.html.generator:html`` macro.
+More precisely::
 
   <%= (:h1 "header") "hi" (:princ-safe (generate-footer)) %>
 
-is equivalent to
+is equivalent to::
 
   (net.html.generator:html
     (:h1 "header")
     "hi"
     (:princ-safe (generate-footer)))
 
-which will output something like the following HTML:
+which will output something like the following HTML::
 
  <h1>header</h1>hi<hr>2002-06-09
 
-The lsp-araneida.lisp file defines <%= %> to use Araneida's HTML
-generation facility.
+The ``lsp-araneida.lisp`` file defines ``<%= %>`` to use Araneida's
+HTML generation facility.
 
 During execution of LSP code, some variables related to the HTTP
 request will be bound for use by the LSP code itself.
@@ -85,26 +85,28 @@ request will be bound for use by the LSP code itself.
 For example, LSP's AllegroServe support binds the following two
 variables:
 
-  REQUEST -- The HTTP request object containing all the
-             information about the request.
-  ENTITY  -- The information passed to the publish-lsp function.
+  REQUEST
+    The HTTP request object containing all the information about the request.
+  ENTITY
+    The information passed to the publish-lsp function.
 
 (See the AllegroServe documentation for more information on these
 objects.)
 
-In Araneida, the two variables are METHOD and REQUEST, which are bound
-to objects representing the type of HTTP request and the HTTP request
-itself, respectively.
+In Araneida, the two variables are ``METHOD`` and ``REQUEST``, which
+are bound to objects representing the type of HTTP request and the
+HTTP request itself, respectively.
 
 
-* TIPS
+Tips
+----
 
-Expressions can be used inside HTML attributes, e.g.,
+Expressions can be used inside HTML attributes, e.g.::
 
  <img src="<%= (compute-img-url request) %>">
 
 Scriptlets do not need to be complete lisp forms, as long as the
-page as a whole is syntactically valid, e.g.,
+page as a whole is syntactically valid, e.g.::
 
   <% (dotimes (i 10) %>
     <img src="mr-yuck.jpg">
@@ -114,7 +116,8 @@ See the examples directory for examples of publishing and using LSP
 files in both AllegroServe and Araneida.
 
 
-* IMPLEMENTATION NOTES AND CAVEATS
+Implementation notes and caveats
+--------------------------------
 
 LSP pages are converted to strings containing lisp code, which are
 then compiled and cached.  If the source file containing the lsp code
