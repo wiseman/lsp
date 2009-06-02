@@ -21,7 +21,7 @@ implementation.
 
 Before loading LSP, first load the particular web server code you're
 using.  Then the easiest way to load LSP is to use ASDF, by evaluting
-one of the following forms:
+one of the following forms::
 
   (asdf:operate 'asdf:load-op :lsp-aserve)   ;; For AllegroServe support
   (asdf:operate 'asdf:load-op :lsp-araneida) ;; For Araneida support
@@ -30,7 +30,7 @@ one of the following forms:
 Using LSP
 ----------
 
-To publish an LSP page, call the ``PUBLISH-LSP`` function:
+To publish an LSP page, call the ``PUBLISH-LSP`` function::
 
   PUBLISH-LSP (&key path file server (package *package*))     [function]
 
@@ -41,7 +41,7 @@ publish. ``PACKAGE`` is the package the reader should use when loading
 and compiling this file (``*package*`` is the default).  ``SERVER`` is
 the HTTP listener on which to publish the file
 
-Example:
+Example::
 
   (publish-lsp :path "/temperature.html"
                :file "/Users/wiseman/src/temperature.lsp"
